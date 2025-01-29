@@ -47,9 +47,9 @@
       "url": "https://mintlify.com/blog"
     },
     {
-      "name": "Reach to Us",
-      "icon": "building",
-      "url": "https://verloop.io"
+      "name": "Contact Us",
+      "icon": "email",
+      "url": "hello@verloop.io"
     }
   ],
   "navigation": [
