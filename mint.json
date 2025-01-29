@@ -37,9 +37,9 @@
   ],
   "anchors": [
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Verloop.io",
+      "icon": "rocket",
+      "url": "https://verloop.io"
     },
     {
       "name": "Blog",
