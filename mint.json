@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hello@verloop.io"
     }
   ],
   "topbarCtaButton": {
@@ -84,7 +84,7 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
+    "x": "https://x.com/verloopio",
     "github": "https://github.com/mintlify",
     "linkedin": "https://linkedin.com/company/mintlify"
   }
