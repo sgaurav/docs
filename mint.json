@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Verloop.io Developer Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/verloop_logo_dark.svg",
+    "light": "/logo/verloop_logo_light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
