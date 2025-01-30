@@ -62,7 +62,7 @@
         {
           "group": "Code Block",
           "icon": "pen-paintbrush",
-          "pages": ["essentials/test/code-test, "essentials/code"]
+          "pages": ["essentials/test/code-test", "essentials/code"]
         },
         "essentials/markdown",
         "essentials/images",
