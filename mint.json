@@ -23,6 +23,10 @@
     {
       "name": "Support",
       "url": "mailto:hello@verloop.io"
+    },
+    {
+      "name": "Book a Demo",
+      "url": "https://www.verloop.io/get-demo/"
     }
   ],
   "topbarCtaButton": {
@@ -44,12 +48,7 @@
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    },
-    {
-      "name": "Contact Us",
-      "icon": "building",
-      "url": "https://1verloop.io"
+      "url": "https://www.verloop.io/blog/"
     }
   ],
   "navigation": [
