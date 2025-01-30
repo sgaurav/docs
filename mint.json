@@ -59,9 +59,12 @@
     {
       "group": "Essentials",
       "pages": [
-        "essentials/test/code-test",
+        {
+          "group": "Code Block",
+          "icon": "pen-paintbrush",
+          "pages": ["essentials/test/code-test, "essentials/code"]
+        },
         "essentials/markdown",
-        "essentials/code",
         "essentials/images",
         "essentials/settings",
         "essentials/navigation",
