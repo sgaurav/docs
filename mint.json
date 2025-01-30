@@ -23,15 +23,11 @@
     {
       "name": "Support",
       "url": "mailto:hello@verloop.io"
-    },
-    {
-      "name": "Book a Demo",
-      "url": "https://www.verloop.io/get-demo/"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://verloop.io"
+    "name": "Book a Demo",
+    "url": "https://www.verloop.io/get-demo/"
   },
   "tabs": [
     {
