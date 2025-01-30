@@ -51,8 +51,8 @@
     {
       "group": "Getting Started",
       "pages": [
-        "introduction",
         "quickstart",
+        "introduction",
         "development"
       ]
     },
