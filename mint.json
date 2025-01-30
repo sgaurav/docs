@@ -49,10 +49,10 @@
   ],
   "navigation": [
     {
-      "group": "Getting Started",
+      "group": "Overview",
       "pages": [
-        "quickstart",
         "introduction",
+        "quickstart",
         "development"
       ]
     },
