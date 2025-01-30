@@ -52,6 +52,7 @@
       "group": "Overview",
       "pages": [
         "introduction",
+        "capabilities",
         "quickstart",
         "development"
       ]
