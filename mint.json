@@ -59,9 +59,9 @@
     {
       "group": "Getting Started",
       "pages": [
-        "quickstart",
-        "first-recipe",
-        "development"
+        "get-started/quick-start",
+        "get-started/first-recipe",
+        "get-started/developer-start"
       ]
     },
     {
