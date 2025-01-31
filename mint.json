@@ -5,7 +5,7 @@
     "dark": "/logo/verloop_logo_dark.svg",
     "light": "/logo/verloop_logo_light.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#CA071A",
     "light": "#FFFDF5",
@@ -96,7 +96,7 @@
   ],
   "footerSocials": {
     "x": "https://x.com/verloopio",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "github": "https://github.com/verloop",
+    "linkedin": "https://linkedin.com/company/verloopio"
   }
 }
