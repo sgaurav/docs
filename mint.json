@@ -64,21 +64,21 @@
         "get-started/developer-start"
       ]
     },
-    {
-      "group": "Essentials",
-      "pages": [
-        {
-          "group": "Code Block",
-          "icon": "pen-paintbrush",
-          "pages": ["essentials/test/code-test", "essentials/code"]
-        },
-        "essentials/markdown",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
+    // {
+    //   "group": "Essentials",
+    //   "pages": [
+    //     {
+    //       "group": "Code Block",
+    //       "icon": "pen-paintbrush",
+    //       "pages": ["essentials/test/code-test", "essentials/code"]
+    //     },
+    //     "essentials/markdown",
+    //     "essentials/images",
+    //     "essentials/settings",
+    //     "essentials/navigation",
+    //     "essentials/reusable-snippets"
+    //   ]
+    // },
     {
       "group": "API Documentation",
       "pages": [
