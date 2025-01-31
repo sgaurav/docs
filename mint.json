@@ -57,6 +57,14 @@
       ]
     },
     {
+      "group": "Getting Started",
+      "pages": [
+        "quickstart",
+        "first-recipe",
+        "development"
+      ]
+    },
+    {
       "group": "Essentials",
       "pages": [
         {
