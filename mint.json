@@ -65,7 +65,7 @@
       ]
     },
     {
-      "group": "Telephony Integration",
+      "group": "Integrating Telephony",
       "pages": [
         "telephony-integration/basics",
         "telephony-integration/sip-integration",
