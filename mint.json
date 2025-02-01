@@ -65,6 +65,14 @@
       ]
     },
     {
+      "group": "Telephony Integration",
+      "pages": [
+        "telephony-integration/basics",
+        "telephony-integration/sip-integration",
+        "telephony-integration/webrtc-integration"
+      ]
+    },
+    {
       "group": "API Documentation",
       "pages": [
         "api-v1/introduction"
