@@ -1,45 +1,59 @@
 ---
-title: 'Telephony Basics'
-description: 'Start building powerful Voice AI Agents in under 5 minutes'
+title: 'Telephony Fundamentals'
+description: 'Understanding Core Principles and Integration Techniques'
 ---
-## Setting up
+Verloop Voice AI Agents leverage modern telephony protocols and technologies to seamlessly bridge traditional voice networks with digital voice intelligence. 
 
-The first step to building high-performing Voice AI Agents is setting up the infrastructure that enables communication with the real world.
+This section explains the fundamental mechanisms of telephony, key technical concepts, and the integration methods available for your deployment.
 
-<CardGroup cols={2}>
-  <Card title="Integrate Telephony" icon="phone-volume" href="https://mintlify.com/docs/quickstart">
-    Get your communication channel dialed in with easy-to-follow steps.
-  </Card>
+## How Telephony Works
+Traditional telephony uses the Public Switched Telephone Network (PSTN) to transmit voice signals over physical phone lines.  Digital telephony converts these signals into data packets for transmission over IP networks (VoIP).
 
-  <Card title="Configure Speech" icon="language" href="https://mintlify.com/docs/development">
-    Enable the language capabilities for your Voice Agent.
-  </Card>
-</CardGroup>
+Call Flow
+A typical voice call begins when a user initiates a call via a PSTN (Public Switched Telephone Network) or VoIP endpoint. The call is then routed through various network components until it reaches your Voice AI platform.
 
-## Make it yours
+Signal Conversion
+When a call is initiated, analog audio signals are converted to digital data using codecs. This digital data is packetized and transmitted over IP networks. At the receiving end, the packets are reassembled, and digital-to-analog conversion takes place to reproduce the sound.
 
-Unlock limitless capabilities that make your AI Phone Agents unstoppable.
+Real-Time Communication
+For both inbound and outbound calls, a real-time, bi-directional communication channel is established between the caller and the Verloop Voice AI. This channel is maintained using robust protocols that ensure low latency and high call quality.
 
-<CardGroup cols={2}>
-  <Card title="Build your First Agent" icon="user-astronaut" href="first-recipe">
-    Quick deployment of your first AI Phone Agent with powerful customization options.
-  </Card>
+## Key Concepts
+Understanding telephony integrations requires familiarity with several technical terms:
 
-  <Card title="Test & Deploy" icon="vial" href="first-recipe">
-    Easily test, refine and deploy production-ready Agents.
-  </Card>
-</CardGroup>
+SIP (Session Initiation Protocol): A signaling protocol used to establish, maintain, and terminate communication sessions over IP networks, including voice and video calls. Think of it as the language your phone system uses to talk to Verloop.io.
 
-  ## Monitor and Improve
+PSTN (Public Switched Telephone Network): The PSTN is the traditional circuit-switched telephone network used worldwide. It forms the backbone for conventional voice communications and connects with VoIP systems via gateways.
 
-Track and improve your Agent performance with a powerful Dashboard and Reporting.
+WebRTC (Web Real-Time Communication): Web sockets offer a full-duplex communication channel over a single TCP connection. This persistent connection is crucial for real-time applications such as call control, signaling, and media exchange in web-based integrations.
 
-<CardGroup cols={2}>
-  <Card title="Dashboard" icon="gauge" href="https://mintlify.com/docs/settings/global">
-    Track scale and performance with a customizable dashboard.
-  </Card>
+Web Socket: A persistent connection between a client (like a web browser or your server) and a server, enabling real-time data exchange. Verloop.io uses WebSockets to communicate with your telephony system for call events and data.
 
-  <Card title="Improve Performance" icon="flag-checkered" href="https://mintlify.com/docs/api-playground/openapi">
-    Leverage reports to find areas of improvement and achieving better results.
-  </Card>
-</CardGroup>
+Trunk: A virtual connection that carries multiple communication channels. In the context of SIP, a SIP trunk connects your phone system to Verloop.io.
+
+Additional Concepts:
+
+Codecs: Algorithms that compress and decompress digital audio, ensuring efficient data transmission.
+Media Gateways: Devices or software that translate media streams between different telephony protocols.
+Signaling Protocols: Standards that manage the setup, control, and teardown of calls.
+
+
+## Available Integration Methods
+Verloop.io offers several integration methods to suit your existing telephony setup:
+
+<AccordionGroup>
+  <Accordion title="Integrating using SIP" icon="circle-nodes">
+    Leverages the Session Initiation Protocol to establish a direct and robust connection. This method is ideal for advanced call routing and complex call-handling logic.
+  </Accordion>
+
+  <Accordion title="WebRTC Integration" icon="terminal">
+    Uses Web Real-Time Communication for browser-based voice calls. It is optimized for low-latency interactions and can be embedded directly into web applications for a seamless user experience.
+  </Accordion>
+
+  <Accordion title="Ready-to-Integrate Channels" icon="cookie">
+    In addition to custom integrations, Verloop provides out-of-the-box connectivity with popular telephony providers such as:
+      Twilio: Known for its comprehensive cloud communications services - ideal choice for global customers and reach.
+      Knowlarity: Specializes in enterprise-grade voice solutions.
+      Exotel: A popular platform for customer engagement and voice services.
+  </Accordion>
+</AccordionGroup>
