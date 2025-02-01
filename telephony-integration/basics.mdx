@@ -2,48 +2,56 @@
 title: 'Telephony Fundamentals'
 description: 'Understanding Core Principles and Integration Techniques'
 ---
-Verloop Voice AI Agents leverage modern telephony protocols and technologies to seamlessly bridge traditional voice networks with digital voice intelligence. 
+
+Verloop Voice AI Agents leverage modern telephony protocols and technologies to seamlessly bridge traditional voice networks with digital voice intelligence.
 
 This section explains the fundamental mechanisms of telephony, key technical concepts, and the integration methods available for your deployment.
 
 ## How Telephony Works
-Traditional telephony uses the Public Switched Telephone Network (PSTN) to transmit voice signals over physical phone lines.  Digital telephony converts these signals into data packets for transmission over IP networks (VoIP).
 
-Call Flow
-A typical voice call begins when a user initiates a call via a PSTN (Public Switched Telephone Network) or VoIP endpoint. The call is then routed through various network components until it reaches your Voice AI platform.
+Traditional telephony uses the **Public Switched Telephone Network (PSTN)** to transmit voice signals over physical phone lines.  Digital telephony converts these signals into data packets for transmission over IP networks (VoIP).
 
-Signal Conversion
-When a call is initiated, analog audio signals are converted to digital data using codecs. This digital data is packetized and transmitted over IP networks. At the receiving end, the packets are reassembled, and digital-to-analog conversion takes place to reproduce the sound.
+### Call Flow
 
-Real-Time Communication
+A typical voice call begins when a user initiates a call via a PSTN (Public Switched Telephone Network) or VoIP endpoint. The call is then routed through various network components until it reaches the receiver and in your case, Verloop's Voice AI platform.
+
+### Signal Conversion
+
+When a call is initiated, analog audio signals are converted to digital data using codecs. This digital data is packetized and transmitted over IP networks.&#x20;
+
+At the receiving end, the packets are reassembled, and digital-to-analog conversion takes place to reproduce the sound.
+
+### Real-Time Communication
+
 For both inbound and outbound calls, a real-time, bi-directional communication channel is established between the caller and the Verloop Voice AI. This channel is maintained using robust protocols that ensure low latency and high call quality.
 
 ## Key Concepts
+
 Understanding telephony integrations requires familiarity with several technical terms:
 
-SIP (Session Initiation Protocol): A signaling protocol used to establish, maintain, and terminate communication sessions over IP networks, including voice and video calls. Think of it as the language your phone system uses to talk to Verloop.io.
+1. **SIP (Session Initiation Protocol)** - A signaling protocol used to establish, maintain, and terminate communication sessions over IP networks, including voice and video calls. Think of it as the language your phone system uses to talk to Verloop.io.
 
-PSTN (Public Switched Telephone Network): The PSTN is the traditional circuit-switched telephone network used worldwide. It forms the backbone for conventional voice communications and connects with VoIP systems via gateways.
+2. **PSTN (Public Switched Telephone Network)** - The PSTN is the traditional circuit-switched telephone network used worldwide. It forms the backbone for conventional voice communications and connects with VoIP systems via gateways.
 
-WebRTC (Web Real-Time Communication): Web sockets offer a full-duplex communication channel over a single TCP connection. This persistent connection is crucial for real-time applications such as call control, signaling, and media exchange in web-based integrations.
+3. **WebRTC (Web Real-Time Communication)** - Web sockets offer a full-duplex communication channel over a single TCP connection. This persistent connection is crucial for real-time applications such as call control, signaling, and media exchange in web-based integrations.
 
-Web Socket: A persistent connection between a client (like a web browser or your server) and a server, enabling real-time data exchange. Verloop.io uses WebSockets to communicate with your telephony system for call events and data.
+4. **Trunk** - A virtual connection that carries multiple communication channels. In the context of SIP, a SIP trunk connects your phone system to Verloop.io.
 
-Trunk: A virtual connection that carries multiple communication channels. In the context of SIP, a SIP trunk connects your phone system to Verloop.io.
+5. **Additional Concepts**&#x20;
 
-Additional Concepts:
+   1. **Codecs** - Algorithms that compress and decompress digital audio, ensuring efficient data transmission.
 
-Codecs: Algorithms that compress and decompress digital audio, ensuring efficient data transmission.
-Media Gateways: Devices or software that translate media streams between different telephony protocols.
-Signaling Protocols: Standards that manage the setup, control, and teardown of calls.
+   2. **Media Gateways** - Devices or software that translate media streams between different telephony protocols.
 
+   3. **Signaling Protocols** - Standards that manage the setup, control, and teardown of calls.
 
 ## Available Integration Methods
+
 Verloop.io offers several integration methods to suit your existing telephony setup:
 
 <AccordionGroup>
-  <Accordion title="Integrating using SIP" icon="circle-nodes">
-    Leverages the Session Initiation Protocol to establish a direct and robust connection. This method is ideal for advanced call routing and complex call-handling logic.
+  <Accordion title="Integration using SIP(preferred)" defaultOpen="yes" icon="circle-nodes">
+    Leverages the Session Initiation Protocol(SIP) to establish a direct and robust connection. This method is ideal for advanced call routing and complex call-handling logic.
   </Accordion>
 
   <Accordion title="WebRTC Integration" icon="terminal">
@@ -51,9 +59,12 @@ Verloop.io offers several integration methods to suit your existing telephony se
   </Accordion>
 
   <Accordion title="Ready-to-Integrate Channels" icon="cookie">
-    In addition to custom integrations, Verloop provides out-of-the-box connectivity with popular telephony providers such as:
-      Twilio: Known for its comprehensive cloud communications services - ideal choice for global customers and reach.
-      Knowlarity: Specializes in enterprise-grade voice solutions.
-      Exotel: A popular platform for customer engagement and voice services.
+    In addition to mentioned integration methods, Verloop provides out-of-the-box connectivity with popular telephony providers such as&#x20;
+
+    1. **Twilio** - Known for its comprehensive cloud communications services - ideal choice for global customers and reach.
+
+    2. **Knowlarity** - Specializes in enterprise-grade voice solutions.&#x20;
+
+    3. **Exotel** - A popular platform for customer engagement and voice services.
   </Accordion>
 </AccordionGroup>
