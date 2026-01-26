@@ -27,7 +27,7 @@
   ],
   "topbarCtaButton": {
     "name": "Book a Demo",
-    "url": "https://www.verloop.io/get-demo/"
+    "url": "https://www.verloop.io/get-demo/?ref=support-docs"
   },
   "tabs": [
     {
@@ -65,11 +65,25 @@
       ]
     },
     {
+      "group": "Build",
+      "pages": [
+        {
+          "group": "Create Voice AI Agent",
+          "pages": [
+            "recipe-builder/overview"
+          ]
+        },
+        "build/quick-start",
+        "build/first-recipe",
+        "build/developer-start"
+      ]
+    },
+    {
       "group": "Integrating Telephony",
       "pages": [
         "telephony-integration/basics",
         "telephony-integration/sip-integration",
-        "telephony-integration/webrtc-integration"
+        // "telephony-integration/webrtc-integration"
       ]
     },
     {
