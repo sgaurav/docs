@@ -68,16 +68,20 @@
       "group": "Build",
       "pages": [
         {
-          "group": "Create Voice AI Agent",
+          "group": "Create Voice Agent",
           "pages": [
             "build/recipe-builder/overview",
             "build/recipe-builder/agent-settings",
             "build/recipe-builder/recipe-blocks"
           ]
         },
-        "build/quick-start",
-        "build/first-recipe",
-        "build/developer-start"
+        {
+          "group": "Configure Voice & Accent",
+          "pages": [
+            "build/configure-voices/choose-agent-voice",
+            "build/configure-voices/add-pronunciation"
+          ]
+        }
       ]
     },
     {
