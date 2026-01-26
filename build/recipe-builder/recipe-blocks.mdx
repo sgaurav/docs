@@ -1,0 +1,118 @@
+# Understanding Recipe Blocks
+
+Blocks are the fundamental units of a Verloop Recipe. Each block represents a specific step, action, or decision in your conversation flow. By connecting these blocks, you can build sophisticated **Voice AI Agents** capable of handling everything from simple FAQs to complex, multi-turn consultations.
+
+## Block Library
+
+Verloop offers a diverse set of blocks to balance rigid control with the fluid reasoning of AI Agents.
+
+---
+
+### 1. Message Block
+The simplest way to deliver information. This block plays a pre-defined script or static text to the caller.
+
+* **Key Features:** Instant text-to-speech rendering and low-latency execution.
+* **What it Enables:** Greetings, legal disclaimers, or providing specific information that doesn't require user input.
+* **Settings:** * **Text Content:** The exact script the agent reads.
+
+### 2. Smart AI Block (LLM Block)
+The core of your advanced automation. This block leverages a **LLM** to handle open-ended, multi-turn dialogues within a specific context.
+
+* **Key Features:** Context retention across multiple exchanges, intent recognition, and entity extraction.
+* **What it Enables:** Handling complex workflows where the user might ask follow-up questions or go off-script.
+* **Settings:** * **System Prompt:** Instructions for the **Smart AI Block** behavior.
+    * **Conversation History:** Should the conversation block have access to historic conversations.
+    * **Number of Turns:** Number of times a AI Agent will try to assist before exiting the block.
+    * **Barge In:** Enable or Disable ability of caller to interrupt while the AI Agent is speaking.
+    * **Nudge:** Nudge enables AI Agent to repeat the question in case the caller has not anwsered it.
+    * **AnswerFlow:** Enables AI Agent to access trained information from the Knowledge Base, Website and any other information source configured.
+    * **Speech Normalization:** Converts numbers, units, weight and other data types into natural conversation format.
+    * **Intent and Variable Mapping:** Intent and variable to be extracted from the conversation as it proceeds within the block.
+* **Exit Condition:** Flow exits from the block once a Intent is matched from the configured list.
+* **Pro Tip:** Essential for **Voice AI Agents for Arabic** to manage complex morphological variations and regional nuances in natural conversation.
+* **Latency Tip:** Variable extraction from intent recognition adds to the overall call latency.
+
+### 3. Ask Block
+A specialized, simplified **LLM** block designed to capture a single piece of information from the user.
+
+* **Key Features:** Built-in retry logic and specific slot-filling capabilities.
+* **What it Enables:** Efficient data collection (e.g., "What is your account number?").
+* **Settings:** * **System Prompt:** Instructions for the **Smart AI Block** behavior.
+    * **Conversation History:** Should the conversation block have access to historic conversations.
+    * **Number of Turns:** Number of times a AI Agent will try to assist before exiting the block.
+    * **Barge In:** Enable or Disable ability of caller to interrupt while the AI Agent is speaking.
+    * **Nudge:** Nudge enables AI Agent to repeat the question in case the caller has not anwsered it.
+    * **AnswerFlow:** Enables AI Agent to access trained information from the Knowledge Base, Website and any other information source configured.
+    * **Speech Normalization:** Converts numbers, units, weight and other data types into natural conversation format.
+    * **Intent and Variable Mapping:** Intent and variable to be extracted from the conversation as it proceeds within the block.
+* **Exit Condition:** Flow exits from the block once a Intent is matched from the configured list.
+* **Pro Tip:** Essential for **Voice AI Agents for Arabic** to manage complex morphological variations and regional nuances in natural conversation.
+* **Latency Tip:** Variable extraction from intent recognition adds to the overall call latency.
+
+### 4. Condition Block
+The brain of your routing logic. It evaluates variables and conversation data to determine the next path.
+
+* **What it Enables:** Personalized journeys. For example, routing high-value customers to a human and others to an automated flow.
+* **Settings:** * **Logic Rules:** Define `IF/ELSE` conditions based on user input, existing variables or API responses.
+    * **Variables:** Compare captured data points (e.g., `order_value > 500`).
+
+### 5. Code Block
+For technical flexibility, the Code Block allows you to execute custom JavaScript snippets directly within the flow.
+
+* **Key Features:** High-speed execution of custom logic.
+* **What it Enables:** Data transformation, complex math, or formatting **LLM** outputs before they are spoken.
+* **Settings:** * **JS Editor:** Write and test your JavaScript.
+    * **Input/Output Mapping:** Pass variables into and out of the code environment.
+
+### 6. API Block
+Integrate your **Voice AI Agent** with your tech stack in real-time.
+
+* **What it Enables:** Fetching live data (like order status) or pushing updates to your CRM during a call.
+* **Settings:** * **Method:** GET, POST, PUT, DELETE.
+    * **Configuration:** Headers, Query Params, and JSON Body.
+    * **Mapping:** Save API response fields into Recipe variables.
+
+### 7. Webhook Block
+Make standard webhook calls to external services to trigger events outside the call.
+
+* **Key Features:** Event-driven notifications.
+* **Settings:** Webhook URL and custom payload configuration.
+
+### 8. Transfer Block
+The bridge between **Voice Agents** and human empathy. This block hands off the call to a live representative.
+
+* **What it Enables:** Escalation for complex issues or high-priority sales closures.
+* **Settings:** * **Transfer Destination:** SIP URI or PSTN number.
+    * **Transfer Message:** A bridge message played to the caller during the handoff.
+* **Localized Transfer:** Crucial for **Voice AI Agents for Arabic** to route calls to native-speaking support teams based on detected dialects.
+
+### 9. Close Block
+The logical conclusion of a call or a specific branch of the conversation.
+
+* **What it Enables:** Professional termination of the call.
+* **Settings:** * **Closing Script:** Final words before disconnect.
+    * **Disposition:** Tag the call for reporting (e.g., "Resolved", "Inquiry").
+
+---
+
+## How to Connect Blocks
+
+<Steps>
+    <Step title="Place your Blocks">
+        Select a block from the side panel and drag it onto the Recipe canvas. Start with a **Message Block** for a welcome greeting.
+    </Step>
+
+    <Step title="Establish Transitions">
+        Every block has output ports (circles on the side). Click and drag a line from an output port to the next block. 
+        * **Standard Transitions:** Follow the flow of conversation.
+        * **Logic Transitions:** In a **Condition Block**, connect the "True" port to one block and the "False" port to another.
+    </Step>
+
+    <Step title="onfigure Data Flow">
+        Ensure variables are passed between blocks. For example, take the `id_number` captured in an **Ask Block** and map it into the **API Block** to pull the user's profile.
+    </Step>
+
+    <Step title="Test and Iterate">
+        Use the "Simulator" to talk to your agent. Observe how the **Smart AI** moves through the blocks and adjust your prompts or logic paths based on the real-time feedback.
+    </Step>
+</Steps>
