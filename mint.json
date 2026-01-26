@@ -82,8 +82,7 @@
       "group": "Integrating Telephony",
       "pages": [
         "telephony-integration/basics",
-        "telephony-integration/sip-integration",
-        // "telephony-integration/webrtc-integration"
+        "telephony-integration/sip-integration"
       ]
     },
     {
