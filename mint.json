@@ -70,7 +70,8 @@
         {
           "group": "Create Voice AI Agent",
           "pages": [
-            "build/recipe-builder/overview"
+            "build/recipe-builder/overview",
+            "build/recipe-builder/agent-settings"
           ]
         },
         "build/quick-start",
