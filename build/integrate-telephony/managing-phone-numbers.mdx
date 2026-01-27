@@ -1,0 +1,62 @@
+# Managing Phone Numbers
+
+To bring your **Voice Agents** to life, you must connect them to a telephony provider. This section covers how to add phone numbers, link them to specific Recipes, and configure advanced call behavior for your Voice Agents.
+
+---
+
+## Adding a Phone Number
+
+You can integrate your existing telephony infrastructure to route calls through Verloop's **Voice Agents**.
+
+<Steps>
+	<Step title="Initiate Setup">
+		Navigate to **Settings > Voice > Phone Numbers** and click the **+ Add another number** button.
+	</Step>
+	<Step title="Phone Setup">
+		Link your physical number to a conversational flow:
+		* **Phone Number:** Select your country code and enter the full phone number.
+		* **Recipe:** Select the specific Recipe (Conversation Flow) that this number should trigger. This allows you to have dedicated lines for specialized Voice Agents.
+	</Step>
+	<Step title="Telephony Provider Setup">
+		Select your preferred provider and enter the required credentials from your provider's dashboard:
+
+		| Provider | Required Credentials |
+		| :--- | :--- |
+		| **Twilio** | Account SID, Auth Token |
+		| **Exotel** | Account SID, API Key, API Token, Outbound App Id, Sub Domain |
+		| **Knowlarity** | API Token, API Key, Plan Id, Plan Name, Sound Id |
+		| **Verloop.io** | Use Verloop's native telephony stack. |
+	</Step>
+	<Step title="Speech Recognition & Voice">
+		Fine-tune how the Voice Agent listens and Automate Phone Calls on this specific line:
+		* **Language:** Select the primary language for speech-to-text processing.
+		* **Boosted Keywords:** Enter specific words (like brand names or industry terms) to increase recognition accuracy. This is highly recommended for **Hinglish** and specialized **Arabic Accent AI Agents**.
+		* **Voice Setup:** Choose the default **Speech Profile** for this number.
+	</Step>
+</Steps>
+
+---
+
+## Advanced Call Configurations
+
+Manage the lifecycle of a call to optimize costs and improve user experience through the **Other configurations** section.
+
+### End Call on Silence
+This setting determines the time from the last message from the user when the system will force close the call.
+* **Range:** **1 minute** up to **5 minutes**.
+* **Best Practice:** For **Voice Agents for Banking**, a slightly longer silence threshold can accommodate natural pauses(when user might be searching for documents) in conversation.
+
+### Max call duration with AI
+To prevent runaway costs or stuck sessions, set a hard limit on the longest a phone call will be allowed to go on before forced disconnection.
+* **Range:** **5 minutes** up to **30 minutes**.
+* **Usage:** For complex support flows using Voice Agents, a 10-15 minute limit is typically sufficient.
+* **Best Practice:** For **Voice Agents for Marketing** and **Voice Agents for Outbound Calling**, in our experience calls do not go past 2-3 minutes.
+
+---
+
+## Managing Existing Numbers
+
+On the main **Phone Numbers** page, you can see a summary of all connected lines:
+* **Status Toggle:** Quickly enable or disable a number using the green toggle switch.
+* **Provider Label:** Easily identify if a number is hosted via **Exotel**, **Twilio**, or **Other Partners**.
+* **Edit/Delete:** Expand any number row to modify its **Telephony Setup** or remove it from the platform.

@@ -81,6 +81,14 @@
             "build/configure-voices/choose-agent-voice",
             "build/configure-voices/add-pronunciation"
           ]
+        },
+        {
+          "group": "Integrate Telephony",
+          "pages": [
+            "build/integrate-telephony/managing-phone-numbers",
+            "build/integrate-telephony/speech-recognition-optimization"
+            "build/integrate-telephony/voice-setup"
+          ]
         }
       ]
     },
@@ -89,6 +97,12 @@
       "pages": [
         "telephony-integration/basics",
         "telephony-integration/sip-integration"
+      ]
+    },
+    {
+      "group": "Best Practices",
+      "pages": [
+        "best-practices/handling-dialects-and-accents"
       ]
     },
     {

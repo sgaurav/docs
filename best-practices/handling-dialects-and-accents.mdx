@@ -1,0 +1,99 @@
+---
+title: "Mastering Dialects & Accents"
+description: "Configure your Voice Agent to handle global linguistic nuances, from Khaleeji Arabic to Hinglish and LATAM Spanish."
+---
+
+# Mastering Dialects & Accents
+
+Effective speech recognition requires more than just identifying a language; it requires understanding how that language is spoken locally. A generic "Spanish" or "English" model often fails to capture the cultural context, slang, and code-switching that defines real human conversation.
+
+This guide details how to configure your **Voice AI Agents** to master dialects across the globe.
+
+---
+
+## Middle East: Voice AI for Arabic Language
+
+Arabic is a pluricentric language with significant differences between Modern Standard Arabic (MSA) and regional "Ammiya."
+
+<AccordionGroup>
+  <Accordion title="Khaleeji vs. Emirati">
+    While both fall under the Gulf umbrella, you can use **Boosted Keywords** to prioritize specific phonemes or vocabulary unique to the UAE (**Emirati**) versus broader Gulf (**Khaleeji**) patterns. For instance, specific greeting styles or localized terms for "booking" can be boosted to ensure the **Voice Agents** recognizes the intent correctly.
+  </Accordion>
+
+  <Accordion title="Levantine vs. Maghrebi">
+    North African (**Maghrebi**) dialects often integrate French loanwords and distinct phonetic shifts compared to **Levantine** (Lebanese/Syrian) Arabic. By setting the specific regional model and boosting French-Arabic hybrid terms, your agent maintains high **Contextual Accuracy**.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## India: Voice AI for Indian Languages
+
+India’s linguistic landscape is characterized by frequent code-switching and rapid dialect shifts.
+
+* **Hinglish:** It is rare for a modern conversation to be purely Hindi or purely English. **Voice Agents for India** must be configured to handle **Code-Switching**.
+* **Recognition Accuracy:** Boosting keywords like "Aadhar," "OTP," or "Chahiye" helps the **Voice Agent** maintain high accuracy during mixed-language interactions.
+* **Phonetic Sensitivity:** Tailoring the speech recognition profile ensures that regional pronunciations of English words (e.g., the difference in "v" and "w" sounds in certain regions) are correctly mapped to the intended intent.
+
+---
+
+## LATAM: Voice AI for Spanish & Portuguese
+
+Latin America presents a diverse challenge where "Spanish" varies drastically from the US border down to Patagonia.
+
+### Mexican vs. Rioplatense Spanish
+The way a user says "You" changes the entire grammatical structure of a sentence.
+* **Mexico & Colombia:** Predominantly use "Tú" or "Usted."
+* **Argentina & Uruguay (Rioplatense):** Use "Vos" (voseo). Your **Smart AI** prompts must be instructed to understand and respond using "Vos" to sound authentic.
+* **Caribbean Spanish:** Often features "S-aspiration" (dropping the 's' at the end of words). Use **Boosted Keywords** for common phrases that might sound truncated to a standard model.
+
+### Brazilian Portuguese
+Distinct from European Portuguese in rhythm, vowel openness, and vocabulary. When deploying **Voice AI Agents** for Brazil, ensure you select the `pt-BR` model rather than generic Portuguese to capture the unique "Ginga" and informality of Brazilian business interactions.
+
+---
+
+## Southeast Asia (SEA): Tonal Nuance & Mixed Tongues
+
+SEA languages often rely on tone and heavy code-mixing with English.
+
+<Steps>
+  <Step title="Taglish (The Philippines)">
+    Similar to Hinglish, **Taglish** mixes Tagalog and English. A sentence might start in English and end in Tagalog particles like "po" (for respect). Boost these particles to ensure the **LLM** detects the politeness level of the user.
+  </Step>
+  <Step title="Singlish & Manglish">
+    In Singapore and Malaysia, English is often suffixed with particles like "lah," "meh," or "lor." While these carry no grammatical weight in standard English, they carry massive *emotional* weight. Training your **Smart AI** to recognize "Can lah" vs. "Can meh" changes the context from "Yes, sure" to "Are you skeptical?".
+  </Step>
+  <Step title="Tonal Precision (Thai/Vietnamese)">
+    For tonal languages, context is king. Ensure your **Voice AI Agent** prompts are set to clarify ambiguity immediately if a tone is missed, preventing misunderstandings in booking dates or financial figures.
+  </Step>
+</Steps>
+
+---
+
+## Europe: Regional Specificity
+
+Deploying **Voice AI Agents** in Europe requires navigating high-density dialect zones.
+
+* **German (High German vs. Swiss German):** Standard German (Hochdeutsch) models often fail against Swiss German (Schwyzerdütsch). For Swiss deployments, strictly define the scope to Standard German or utilize specialized localized models if available, as the vocabulary differs significantly.
+* **French (Metropolitan vs. Belgian/Swiss):** While mutually intelligible, numbering systems differ (e.g., "70" and "90"). Ensure your **Smart AI** knows that "Septante" (70) is valid input in Belgium/Switzerland, whereas "Soixante-dix" is expected in France.
+
+---
+
+## Global English: One Language, Many Voices
+
+English is the global business language, but an American model may struggle with an Australian accent or Scottish burr.
+
+| Accent | Optimization Strategy |
+| :--- | :--- |
+| **US/Canada** | Focus on "General American" models. High tolerance for fast speech. |
+| **UK/Ireland** | distinct variations (e.g., London vs. Glasgow). Boost specific local slang terms if operating regionally. |
+| **Australian/NZ** | Enable models with vowel shifting awareness (e.g., "Day" sounding like "Die"). |
+| **Indian English** | Use the specific `en-IN` model. Do not force US English models on Indian demographics, as proper noun recognition (Names, Cities) will degrade significantly. |
+
+## Configuration Best Practices
+
+To handle these variations effectively in your Recipe:
+
+1.  **Variable Prompts:** Use logic blocks to detect the user's region and swap the **System Prompt** of the **AI Agents**. (e.g., *"You are a helpful assistant speaking `Mexican` Spanish"* vs *"You are a helpful assistant speaking `Argentine` Spanish"*).
+2.  **Localized Fallbacks:** If the **Voice AI Agent** detects low confidence in transcription, trigger a fallback that asks the user to confirm using a universal format (e.g., *"Did you say 50? Say Yes to confirm."*).
+3.  **Dynamic Boosting:** Update **Boosted Keywords** based on the campaign region. A "Winter Sale" agent in Dubai needs different keywords than one in Riyadh.

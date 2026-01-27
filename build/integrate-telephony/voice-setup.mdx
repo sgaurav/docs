@@ -1,0 +1,53 @@
+---
+title: "Voice Setup & Personalization"
+description: "Configure the voice identity and phonetic accuracy for your voice agent."
+---
+
+# Voice Setup & Personalization
+
+Once you have selected your telephony provider, the final step in the **Phone Number** configuration is defining the acoustic identity of the line. This ensures that when your **Voice AI Agent** picks up, it sounds exactly like the persona you designed.
+
+---
+
+## Assigning a Voice Profile
+
+The **Voice** setting allows you to link a specific **Speech Profile** to this phone number. This is where you decide if this line handles support queries with a "Calm & Professional" tone or sales calls with an "Energetic & Persuasive" one.
+
+<Steps>
+  <Step title="Select Voice">
+    Click the **Voice** dropdown to view your available Speech Profiles. This list includes both the standard system voices and any **Custom Speech Profiles** you have added (e.g., ElevenLabs or Azure integrations).
+  </Step>
+  <Step title="Audition the Agent">
+    Click the **Play icon** next to the selected voice to hear a real-time sample. 
+    * **Tip:** Always audition the voice to ensure it matches the region. A **Voice AI Agent for Indian Languages** should use a relevant profile to ensure the accent resonates with local callers.
+  </Step>
+</Steps>
+
+---
+
+## Pronunciation Configuration
+
+Even the most advanced **Voice Agents** can struggle with unique brand names or regional dialect terms. The **Pronunciation Words** section allows you to attach specific phonetic rules—previously defined in your **Word Management** library—to this specific phone line.
+
+### Managing Latency vs. Accuracy
+
+<Warning>
+**Critical Performance Note:** Every custom pronunciation word you add forces the AI to check a lookup table before generating speech. 
+* **Impact:** Adding too many words can introduce noticeable latency (lag) before the agent responds.
+* **Limit:** We recommend adding **only essential terms** that the AI consistently mispronounces. Do not add common words.
+</Warning>
+
+### Best Practices for Pronunciation
+
+When configuring **Voice AI Agents for Arabic** or **Indian Languages**, prioritizing the right words is key to maintaining a smooth conversation flow.
+
+| Scenario | Do This (Add to List) | Avoid This (Do Not Add) |
+| :--- | :--- | :--- |
+| **Brand Names** | Add unique company names (e.g., *"Verloop"* -> *"Vur-loop"*). | Don't add standard English words unless the local pronunciation is vastly different. |
+| **Regional Cities** | Add cities with complex spellings (e.g., *"Sharjah"* or *"Thiruvananthapuram"*). | Don't add major global cities (London, Dubai) that models already know. |
+| **Cultural Terms** | Add specific honorifics or units (e.g., *"Lakhs"*, *"Dirhams"*). | Don't add slang that doesn't impact understanding. |
+
+### How to Add Words
+1.  Click into the **Pronunciation Words** field.
+2.  Select the specific terms from your global **Word Management** list that apply to this phone line's use case.
+3.  Test the line to ensure the **Voice Agent** uses the phonetic mapping correctly without causing awkward pauses.
