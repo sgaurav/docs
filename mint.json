@@ -86,9 +86,11 @@
         {
           "group": "Integrate Telephony",
           "pages": [
+            "build/integrate-telephony/basics"
             "build/integrate-telephony/managing-phone-numbers",
             "build/integrate-telephony/speech-recognition-optimization",
             "build/integrate-telephony/voice-setup"
+            "build/integrate-telephony/sip-integration"
           ]
         },
         {
@@ -108,13 +110,6 @@
         "test-voice-agent/manual-chat",
         "test-voice-agent/web-call",
         "test-voice-agent/phone-call"
-      ]
-    },
-    {
-      "group": "Integrating Telephony",
-      "pages": [
-        "telephony-integration/basics",
-        "telephony-integration/sip-integration"
       ]
     },
     {

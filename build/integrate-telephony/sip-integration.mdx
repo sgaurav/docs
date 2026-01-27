@@ -1,0 +1,89 @@
+---
+title: "Custom SIP Integration (BYOC)"
+description: "Bring Your Own Carrier to power Verloop Voice AI Agents using your existing telephony infrastructure."
+---
+
+# Custom SIP Trunking
+
+Verloop supports a **Bring Your Own Carrier (BYOC)** model, allowing enterprises to integrate their existing SIP trunks directly with our platform. This enables you to leverage our **Voice AI Agents** while maintaining your current telecom contracts, pricing, and number management.
+
+This guide outlines the technical requirements and data exchange process needed to bridge your SIP server (PBX/SBC) with Verloop.
+
+---
+
+## Integration Requirements
+
+To establish a secure SIP trunk, specific connection details must be exchanged between your network engineering team and Verloop.
+
+### 1. Inbound Calls (Your Server -> Verloop)
+
+To route calls from your customers to our **Voice AI Agents**, we need to establish a trusted handshake.
+
+<CardGroup cols={2}>
+  <Card title="What We Need From You" icon="server">
+    * **Termination IP Address:** The public IP address or FQDN of your SIP Gateway/SBC where the trunk originates.
+    * **DID Number:** The specific phone number(s) routing to this trunk. This is used for logic mapping and transferring calls back if needed.
+  </Card>
+  <Card title="What We Share With You" icon="network-wired">
+    * **Verloop SIP IP:** Our public Signaling IP where you will point your SIP traffic.
+    * **Extension Number:** A fallback identifier.
+      * *Why?* If your SIP server does not forward the original 'To' header correctly, we use this extension number to identify the tenant and route the call to the correct agent.
+  </Card>
+</CardGroup>
+
+### 2. Outbound Calls (Verloop -> Your Server)
+
+If you plan to use **Voice AI Agents** for outbound campaigns (e.g., Lead Qualification or Collections) using your own lines:
+
+<Info>
+**Authentication:** Most outbound setups require SIP Authentication.
+* You must provide the **Username** and **Password** for the SIP trunk.
+* Verloop will use these credentials to authenticate every outbound invite sent to your gateway.
+</Info>
+
+---
+
+## The Integration Workflow
+
+Configuring a custom SIP trunk is a collaborative process. Follow these steps to go live.
+
+<Steps>
+  <Step title="Gather Prerequisites">
+    Collect your **Termination IP**, **DID list**, and (if applicable) **Outbound Credentials**. Ensure your firewall is prepared to allow traffic from external SIP providers.
+  </Step>
+
+  <Step title="Initiate Request">
+    Contact your Verloop Customer Success Manager or Solutions Engineer with the subject line: **"New SIP Trunk Integration Request"**.
+    * Submit your IP details securely.
+    * Request Verloop's **SIP IP** and your unique **Extension Number**.
+  </Step>
+
+  <Step title="Allowlisting & Configuration">
+    Once data is exchanged:
+    1. **Your Side:** Add Verloop's SIP IP to your firewall's Allowlist (ACL) to permit traffic on port 5060 (UDP/TCP) or 5061 (TLS).
+    2. **Our Side:** We will configure our Session Border Controller (SBC) to accept invites from your Termination IP.
+  </Step>
+
+  <Step title="Connectivity Test">
+    We will conduct a joint test to verify the handshake:
+    * **Inbound Test:** Route a test call to the DID. Verify the **Smart AI** picks up and audio is bi-directional.
+    * **Outbound Test:** Trigger a test call from the Verloop dashboard. Verify the call lands on your handset via your carrier.
+    * **Transfer Test:** Verify the agent can transfer the call back to your human agents (PSTN/SIP Refer).
+  </Step>
+</Steps>
+
+---
+
+## Important Considerations
+
+### Call Transfer Behavior
+When using high-touch support roles, calls often need to transfer back to a human agent.
+* Ensure your SIP setup supports **SIP REFER** or allows us to dial a DID that routes back into your internal call queue (ACD).
+
+### Latency Management
+Using a custom SIP trunk adds an extra "hop" to the network journey.
+* To maintain the low latency required for natural Voice Agent conversation, ensure your SIP Gateway is geographically close to the Verloop region you are hosted in (e.g., Mumbai for India, Dubai and Riyadh for Middle East).
+
+<Warning>
+**Codec Mismatch:** Verloop primarily uses **G.711 (PCMU/PCMA)** for audio. Ensure your SBC is configured to negotiate these codecs to avoid "dead air" or transcoding delays.
+</Warning>
