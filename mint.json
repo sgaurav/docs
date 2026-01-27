@@ -29,12 +29,6 @@
     "name": "Book a Demo",
     "url": "https://www.verloop.io/get-demo/?ref=support-docs"
   },
-  "tabs": [
-    {
-      "name": "V1 API Reference",
-      "url": "api-v1"
-    }
-  ],
   "anchors": [
     {
       "name": "Verloop.io",
