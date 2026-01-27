@@ -79,6 +79,7 @@
           "group": "Configure Voice & Accent",
           "pages": [
             "build/configure-voices/choose-agent-voice",
+            "build/configure-voices/add-custom-voice",
             "build/configure-voices/add-pronunciation"
           ]
         },
@@ -101,6 +102,15 @@
       ]
     },
     {
+      "group": "Test & Debug",
+      "pages": [
+        "test-voice-agent/overview",
+        "test-voice-agent/manual-chat",
+        "test-voice-agent/web-call",
+        "test-voice-agent/phone-call"
+      ]
+    },
+    {
       "group": "Integrating Telephony",
       "pages": [
         "telephony-integration/basics",
@@ -111,7 +121,8 @@
       "group": "Best Practices",
       "pages": [
         "best-practices/handling-dialects-and-accents",
-        "best-practices/accurate-voice-agent-insights"
+        "best-practices/accurate-voice-agent-insights",
+        "best-practices/detailed-guide-testing-voice-agents"
       ]
     },
     {

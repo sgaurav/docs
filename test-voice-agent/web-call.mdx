@@ -1,0 +1,44 @@
+---
+title: "Web Call Testing"
+description: "Simulate high-fidelity voice calls directly from your browser."
+---
+
+Web Call testing bridges the gap between text chat and real telephony. It uses Verloop's web SDK to connect your browser's microphone directly to the **Voice AI Agent**, allowing you to test Speech-to-Text (ASR) and Text-to-Speech (TTS) performance without dialing a phone number.
+
+## Initiating a Web Call
+
+1. Click the **Play Icon** in the Recipe Builder.
+2. Select **Test as Webcall**.
+3. A configuration popup will appear.
+
+## Configuration Options
+
+You can configure the test in two ways:
+
+### Option 1: Test from Phone Settings
+Select an existing phone number from your account. The system will auto-populate the specific **Voice**, **Language**, and **Boosted Keywords** assigned to that line.
+* *Best for:* Regression testing an existing live agent.
+
+### Option 2: Custom Configuration
+Manually tweak settings to experiment with new accents or languages.
+
+* **Language:** Test how different models handle your script (e.g., switch between *English (India)* and *Hindi*).
+* **Voice:** Audition different voices(e.g., *Arjun* vs. *Riya*) to see which tone fits your brand.
+* **Boosted Keywords:** Add terms like "UPI" or "IBAN" to test if the ASR accuracy improves.
+
+## Simulating Context (Request Data)
+
+Real calls often come with data (Caller ID, CRM info). You can simulate this in Web Call:
+* **Add Variable:** Click **+ Add More** in the test popup.
+* **Key/Value:** Enter context like `customer_name: "Rahul"` or `account_type: "Gold"`.
+* **Result:** The AI Agent will start the call knowing this context (e.g., *"Hello Rahul, thanks for being a Gold member"*).
+
+## Debugging Web Calls
+
+During the Web Call, the **Chat Interface** remains active.
+* **Live Transcript:** Watch the ASR convert your speech to text in real-time.
+* **Debug Logs:** If the agent misunderstands you, check the logs to see if it was a transcription error (ASR) or a logic error (LLM).
+
+<Warning>
+**Microphone Permissions:** Ensure your browser has permission to access your microphone. If the agent doesn't respond, check your browser's privacy settings.
+</Warning>

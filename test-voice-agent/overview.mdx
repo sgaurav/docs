@@ -1,0 +1,36 @@
+---
+title: "Testing & Debugging Overview"
+description: "Strategies for validating your Voice Agent's logic, speech, and latency."
+---
+
+## Testing Your Voice AI Agent
+
+Before deploying your **Voice AI Agents** to live customers, it is critical to validate their behavior across three dimensions: conversational logic, speech recognition accuracy, and Voice Agent conversational quality.
+
+Verloop provides a tiered testing suite designed to take you from initial prompt engineering to real-world telephony simulation.
+
+## Testing Methods
+
+<CardGroup cols={3}>
+  <Card title="Manual Chat" icon="message-bot" href="/test-voice-agent/manual-chat">
+    **Best for:** Logic & Flow.
+    Test your Voice Agent prompts and state transitions instantly via text. View raw **LLM logs** and debug variable extraction without speaking.
+  </Card>
+  <Card title="Web Call" icon="globe" href="/test-voice-agent/web-call">
+    **Best for:** ASR & Pronunciation.
+    Simulate a voice call directly in your browser. Perfect for testing accents and language nuances like **Voice AI Agents for Indian Languages** and code-switching capabilities like Hinglish recognition without incurring telephony costs.
+  </Card>
+  <Card title="Phone Call" icon="phone" href="/test-voice-agent/phone-call">
+    **Best for:** Real-world Latency.
+    Dial your integrated phone number to experience the agent over actual telecom networks. Essential for final Quality Assurance before go-live.
+  </Card>
+</CardGroup>
+
+## Which method should I use?
+
+| Goal | Recommended Method |
+| :--- | :--- |
+| **I just changed the System Prompt.** | **Manual Chat** (Fastest iteration cycle). |
+| **I need to check if the AI understands "Lakhs" vs "Likes".** | **Web Call** (Tests the Speech-to-Text configuration). |
+| **I want to hear the accent of my Emirati Arabic AI Agent.** | **Web Call** (High-fidelity audio playback). |
+| **I need to verify call transfer latency.** | **Phone Call** (Real network conditions). |

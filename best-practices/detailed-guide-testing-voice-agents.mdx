@@ -1,0 +1,118 @@
+---
+title: "Testing Best Practices"
+description: "A master guide to ensuring your Voice AI Agents are production-ready and error-free."
+---
+
+# End-to-End Testing Strategy
+
+Deploying a **Voice AI Agent** is different from deploying a Chat Agent. You aren't just limited to testing logic but testing acoustics, latency, and patience. A script that reads well on screen might sound robotic, too long or rushed over the phone.
+
+This guide outlines the **Golden Path** for testing—from the first draft to post-production updates—ensuring your **Native English Voice Agent**, **Voice Agents for Indian Languages**, **Arabic Accent AI Agents** and Voice Agents in 80+ other languages perform flawlessly.
+
+---
+
+## Phase 1: The Build Phase (New Agents)
+
+When building an agent from scratch, your goal is to validate **Logic** before **Voice**.
+
+<Steps>
+  <Step title="Logic Validation (Chat Simulator)">
+    **Tool:** [Chat Simulator](/test-voice-agent/chat-testing)
+    
+    Before worrying about accents, ensure the **AI Agent** follows your rules.
+    * **Happy Path:** Test the ideal customer journey (e.g., User says "Yes" -> Agent books appointment).
+    * **Unhappy Path:** Test rejection (e.g., User says "No, I'm busy" -> Agent handles objection or hangs up).
+    * **Context Check:** Use the **Debug Mode** to ensure variables like `user.name` or `lead_status` are being captured correctly from the start.
+  </Step>
+
+  <Step title="Acoustic Check (Web Call)">
+    **Tool:** [Web Call Testing](/test-voice-agent/web-call)
+    
+    Once the logic holds, test how it sounds without spending money on telephony credits.
+    * **Speed & Tone:** Does the agent speak too fast? Is the selected voice (e.g., *Riya* or *Aditya*) too formal for a sales call?
+    * **Dialect Verification:**
+      * **For Arabic:** Speak in a specific dialect (e.g., *Khaleeji*). Does the agent understand? If not, add **Boosted Keywords**.
+      * **For Hinglish:** Speak a mixed sentence like *"Mera loan application approve hua kya?"*. Verify the transcription in the live chat log.
+  </Step>
+
+  <Step title="Pronunciation Tuning">
+    **Tool:** [Word Management](/build/configure-voices/add-pronunciation)
+    
+    If the agent mispronounces your brand name during the Web Call:
+    1. Go to **Word Management**.
+    2. Add the phonetic spelling.
+    3. **Retest immediately** via Web Call to verify the fix.
+    <Warning>Only add words that are critical. Overloading this list adds latency.</Warning>
+  </Step>
+</Steps>
+
+---
+
+## Phase 2: The Staging Phase (Pre-Production)
+
+Before you assign this Recipe to your main business number, you must test against **Real World Friction**.
+
+### 1. The "Background Noise" Test
+**Method:** Call the agent using the [Real Phone Call](/test-voice-agent/phone-call) method while standing in a noisy environment (or play cafe noise in the background).
+* **Goal:** Test **Interruption Sensitivity**.
+* **Fix:** If the agent stops talking every time a car honks, lower the sensitivity in your Global Settings.
+
+### 2. The "Latency" Test
+**Method:** Call from a mobile network (4G/5G), not Wi-Fi.
+* **Goal:** Feel the delay.
+* **Benchmark:** * **Good:** < 1 seconds response time.
+  * **Bad:** > 3 seconds.
+* **Fix:** If latency is high, shorten your **System Prompt** or remove unnecessary complex logic blocks at the start of the flow.
+
+### 3. The "Silence" Test
+**Method:** Stay silent when the agent asks a question.
+* **Goal:** Verify the **End Call on Silence** triggers correctly (e.g., after 1 minute) or that the agent prompts you again ("Are you still there?").
+
+---
+
+## Phase 3: Making Edits (Regression Testing)
+
+When you need to update an existing live agent (e.g., changing the pricing or adding a new holiday greeting), follow this strict protocol to avoid breaking production.
+
+<CardGroup cols={2}>
+  <Card title="1. Clone & Edit" icon="copy">
+    Never edit the live Recipe directly. **Clone** the Recipe, make your changes, and test on a temporary number or Web Call.
+  </Card>
+  <Card title="2. Regression Test" icon="rotate-left">
+    Test the *unchanged* parts of the flow. Did adding a new "Holiday" block accidentally break the "Transfer to Agent" logic?
+  </Card>
+  <Card title="3. Context Simulation" icon="flask">
+    Use **Web Call Custom Configuration** to inject variables. If your edit changes how "Premium Users" are handled, manually inject `account_type: premium` in the test setup to verify the new path.
+  </Card>
+  <Card title="4. Hot-Swap" icon="shuffle">
+    Once validated, simply switch the **Phone Number** configuration to point to the new Recipe version. This ensures zero downtime.
+  </Card>
+</CardGroup>
+
+---
+
+## Production Monitoring Checklist
+
+Even after deployment, your job isn't done. Use **Post-Call Analysis** to automate quality assurance.
+
+<Check>
+  **Daily:** Check **Post-Call Analysis** logs for "Unknown" intents. If users are asking for something you didn't account for, add a new path.
+</Check>
+<Check>
+  **Weekly:** Review **Speech Recognition** logs for low-confidence transcriptions. Add these terms to **Boosted Keywords**.
+</Check>
+<Check>
+  **Monthly:** Re-evaluate your **Voice Profile**. New, higher-quality voices (e.g., ElevenLabs Turbo) are frequently added to the library. Swapping to a newer model can instantly decrease latency.
+</Check>
+
+---
+
+## Summary: The Testing Pyramid
+
+| Layer | Method | Focus | Frequency |
+| :--- | :--- | :--- | :--- |
+| **Top** | **Real Phone Call** | Latency, Network, Noise | Final QA only |
+| **Middle** | **Web Call** | Accents, ASR, Pronunciation | Weekly / Major Edits |
+| **Base** | **Chat Simulator** | Logic, Prompts, Data Capture | Daily / Every Edit |
+
+By adhering to this pyramid, you ensure that 90% of bugs are caught in the cheap, fast **Chat** layer, leaving the **Phone** layer for final polish of your **Voice AI Agents**.

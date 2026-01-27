@@ -1,0 +1,33 @@
+---
+title: "Real Phone Call Testing"
+description: "Validate end-to-end latency and network performance."
+---
+
+The final stage of validation is the "Real World" test. This involves dialing a phone number integrated with your Recipe to experience the **Voice AI Agent** exactly as a customer would.
+
+## Prerequisites
+* You must have a configured number in **Settings > Voice > Phone Numbers**.
+* The number must be linked to the Recipe you are testing.
+* You need a valid provider integration (Twilio, Exotel, etc.).
+
+## What to Test
+
+### 1. Network Latency
+WebRTC (Web Call) is often faster than standard telephony. A real call helps you verify if the **Turn-Taking** speed is acceptable over 4G/5G networks.
+
+### 2. Background Noise
+Call from a noisy environment (street, cafe) to test the agent's **Interruption Sensitivity**.
+* *Adjustment:* If the agent gets interrupted too easily by noise, go to your Phone Number settings and increase the **Silence Threshold**.
+
+### 3. Dialect Handling on Phone Lines
+Phone lines compress audio, which can affect accent recognition.
+* **Voice AI Agents for Arabic:** Ensure the distinction between *Khaleeji* and *Levantine* accents holds up over the phone line.
+* **Hinglish:** Verify that rapid code-switching is captured accurately despite the lower audio fidelity of standard telephony.
+
+## Analyzing the Call
+
+Since you cannot see live logs during a real phone call:
+1. Complete the conversation and hang up.
+2. Navigate to the **Conversations** tab in your dashboard.
+3. Open the transcript for the call you just made.
+4. Review the **Post-Call Insights** and transcript to identify any drop-offs.
