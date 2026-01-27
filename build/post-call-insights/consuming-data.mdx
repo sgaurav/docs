@@ -1,0 +1,41 @@
+---
+title: "Consuming Insight Data"
+description: "Access your Post-Call Insights via Dashboard, Webhooks, and Reports."
+---
+
+# Viewing & Using Data
+
+Once your **Voice AI Agents** have finished the call and information is processed, the data is available through three primary channels. Insight is typically completed within seconds but may take up to 5 minutes after the call ending.
+
+## 1. Dashboard & Transcript View
+
+For manual review, you can see the analysis side-by-side with the call transcript.
+
+* Navigate to the **Conversation Screen**.
+* Look for the **Post-Call Insights** widget.
+* **Status:** You may see "Analyzing Your Call..." immediately after hang-up. Once done, the values (e.g., `Sentiment: Positive`) will appear.
+
+## 2. Real-Time Webhooks
+
+For CRM integrations (Salesforce, HubSpot, Zoho), use Webhooks to push data instantly.
+
+The webhook event `analysis_success` will contain a payload similar to this:
+
+```json
+{
+  "trigger_type": "analysis_success",
+  "channel": "voice",
+  "room": {
+    "analysis": {
+      "user_defined": {
+        "interest_in_loan": "true",
+        "lead_status": "Qualified",
+        "call_summary": "Customer is interested in 5 Lakh loan for home renovation."
+      }
+    }
+  }
+}
+
+## 3. Reporting & API
+
+All analysis parameters are automatically added as columns in your **Master Report** downloads (headers will look like analysis.interest_in_loan).

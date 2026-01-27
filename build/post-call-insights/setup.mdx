@@ -1,0 +1,40 @@
+---
+title: "Defining Insight Parameters"
+description: "Configure the specific data points you want your Voice Agent to extract."
+---
+
+## Setting Up Insight
+
+To start capturing insights, you need to define "Parameters" in your Recipe Settings. Each parameter acts as a specific instruction to the AI on what information to look for in the conversation.
+
+## Configuration Steps
+
+<Steps>
+  <Step title="Navigate to Insight">
+    Open your Recipe and click on the **Global Settings** and navigate to **Post-Call Insights** tab.
+  </Step>
+  <Step title="Add New Parameter">
+    Click **Add Insight**. You can define up to **10 unique insights** per agent.
+  </Step>
+  <Step title="Define Variable Details">
+    * **Name:** The system name for the variable (e.g., `loan_interest_level`). This is used in API/Webhooks.
+    * **Description:** The "Prompt" for the AI. Be descriptive! (e.g., *"Did the user express interest in a Gold Loan? Check for phrases like 'I want money' or 'Loan chahiye'."*)
+    * **Type:** Select the data format (see below).
+  </Step>
+</Steps>
+
+## Data Types
+
+Choosing the right data type ensures your **Voice AI Agents** return clean, usable data for your integrations.
+
+| Type | Description | Best Use Case |
+| :--- | :--- | :--- |
+| **Text** | Extracts a string of text (max 300 chars). | "Summarize the customer's complaint about the credit card." |
+| **Boolean** | Returns `true` or `false`. | "Did the customer ask for a manager?" |
+| **Number** | Extracts a numeric value. | "What is the customer's age?" or "Loan amount requested?" |
+| **Date** | Extracts dates in a standard format. | "When does the user want the callback?" |
+| **Enum** | Selects from a predefined list of options. | Lead Status: `["Qualified", "Not Interested", "Callback"]` |
+
+<Note>
+  **Pro Tip for Indian Languages:** When writing descriptions for **Hinglish** agents, you can include Hindi keywords in the description to help the AI understand context (e.g., *"Check if user said 'Haan' or 'Yes' for confirmation"*).
+</Note>

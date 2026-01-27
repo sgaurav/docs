@@ -1,0 +1,39 @@
+---
+title: "Accurate Voice Insights"
+description: "Optimization tips for high-accuracy Voice AI Insights."
+---
+
+## Optimization Guide
+
+To get the most accurate results from your Voice Agents, follow these prompt engineering best practices.
+
+## Dos and Don'ts
+
+<AccordionGroup>
+  <Accordion title="DO: Be Specific in Descriptions">
+    The "Description" field is effectively a prompt for the LLM.
+    * **Bad:** "Check interest."
+    * **Good:** "Did the user explicitly state they want to buy the insurance policy? Mark as `True` only if they said 'Yes' or 'Agree'."
+  </Accordion>
+
+  <Accordion title="DO: Handle Ambiguity in Enums">
+    When using **Enum** (Select from List), ensure your options cover all scenarios.
+    * **Recommended:** Always include an option like `"Unclear"` or `"Other"` so the AI isn't forced to make a wrong guess if the user was vague.
+  </Accordion>
+
+  <Accordion title="DON'T: Overload the Description">
+    Keep descriptions under **300 characters**. If you need complex logic, split it into two separate parameters (e.g., one for "Interest" and one for "Reason").
+  </Accordion>
+</AccordionGroup>
+
+## Handling Latency
+
+Analysis is evoked immediately but takes time to process.
+* **Expectation:** Data is usually ready within seconds but may take up to 5 minutes post-call.
+* **Workflow:** Do not block your immediate post-call logic (like sending an SMS) on the analysis result. Use the **Webhook** to trigger a separate follow-up flow once the data arrives.
+
+## Regional Nuances
+
+For **Voice AI Agents for Arabic** or Indian regions, the transcription might contain mixed languages.
+* **Tip:** If you are analyzing a **Hinglish** call, you don't need to translate the description into Hindi. The AI understands the context of the transcript even if the prompt is in English.
+* **Tip:** For **Arabic**, ensure your description asks for the *intent* rather than looking for specific keywords, as dialects (Khaleeji vs. Levantine) use different words for the same action.

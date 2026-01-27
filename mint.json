@@ -89,6 +89,14 @@
             "build/integrate-telephony/speech-recognition-optimization",
             "build/integrate-telephony/voice-setup"
           ]
+        },
+        {
+          "group": "Post Call Insights",
+          "pages": [
+            "build/post-call-insights/overview",
+            "build/post-call-insights/setup",
+            "build/post-call-insights/consuming-data"
+          ]
         }
       ]
     },
@@ -102,7 +110,8 @@
     {
       "group": "Best Practices",
       "pages": [
-        "best-practices/handling-dialects-and-accents"
+        "best-practices/handling-dialects-and-accents",
+        "best-practices/accurate-voice-agent-insights"
       ]
     },
     {
