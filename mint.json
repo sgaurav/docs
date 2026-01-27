@@ -121,20 +121,6 @@
         "best-practices/accurate-voice-agent-insights",
         "best-practices/detailed-guide-testing-voice-agents"
       ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-v1/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-v1/endpoint/get",
-        "api-v1/endpoint/create",
-        "api-v1/endpoint/delete"
-      ]
     }
   ],
   "footerSocials": {
