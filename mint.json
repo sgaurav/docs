@@ -29,6 +29,12 @@
     "name": "Book a Demo",
     "url": "https://www.verloop.io/get-demo/?ref=support-docs"
   },
+  "tabs": [
+    {
+      "name": "V1 API Reference",
+      "url": "api-v1"
+    }
+  ],
   "anchors": [
     {
       "name": "Verloop.io",
@@ -120,6 +126,12 @@
         "best-practices/handling-dialects-and-accents",
         "best-practices/accurate-voice-agent-insights",
         "best-practices/detailed-guide-testing-voice-agents"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-v1/introduction"
       ]
     }
   ],
