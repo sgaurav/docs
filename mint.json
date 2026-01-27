@@ -89,7 +89,7 @@
             "build/integrate-telephony/basics"
             "build/integrate-telephony/managing-phone-numbers",
             "build/integrate-telephony/speech-recognition-optimization",
-            "build/integrate-telephony/voice-setup"
+            "build/integrate-telephony/voice-setup",
             "build/integrate-telephony/sip-integration"
           ]
         },
