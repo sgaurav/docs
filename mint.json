@@ -113,6 +113,14 @@
       ]
     },
     {
+      "group": "Outreach",
+      "pages": [
+        "outreach/overview",
+        "outreach/bulk-upload",
+        "outreach/campaign-api"
+      ]
+    },
+    {
       "group": "Best Practices",
       "pages": [
         "best-practices/handling-dialects-and-accents",

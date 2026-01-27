@@ -1,0 +1,62 @@
+---
+title: "Create via API"
+description: "Configure a real-time Voice Agent campaign to be triggered programmatically."
+---
+
+# Creating a Voice Campaign (API)
+
+The **Via API** trigger allows you to configure all the telephony rules (DND, Retries, AI behavior) within the dashboard, while managing the audience dynamically through your code. This is essential for event-based calling (e.g., calling a lead immediately after a form signup).
+
+## Configuration Steps
+
+Follow this guide to set up the campaign shell.
+
+<Steps>
+  <Step title="Step 1: Campaign Details">
+    Navigate to **Outreach > + New Outreach** and configure the foundational settings:
+    * **Name:** Enter a unique identifier for your campaign.
+    * **Channel:** Select **Voice**.
+    * **Voice Integration:** Choose the phone number that will make the calls.
+    * **Trigger:** Select **Via API**.
+    
+    <Note>
+      Selecting **Via API** changes the workflow to accept single contact triggers rather than a bulk file upload.
+    </Note>
+  </Step>
+
+  <Step title="Step 2: Recipe Configuration">
+    Define how the **Voice AI Agent** behaves once the call connects:
+    * **Select Recipe:** Choose the specific voice flow for this campaign.
+    * **Start Logic:** Determine when the AI speaks:
+        * **Start Immediately:** The agent speaks the moment the call is answered.
+        * **Wait for User Greeting:** The agent waits for the user to say "Hello" (uses Voice Activity Detection).
+        * **Wait for X seconds:** Adds a configurable delay (1-5 seconds) before speaking.
+  </Step>
+
+  <Step title="Step 3: Telephony Rules">
+    Since API calls happen in real-time, these guardrails are critical to ensure compliance and high connection rates.
+
+    * **DND Hours:** Define "Do Not Call" windows (e.g., 9 PM - 9 AM).
+      * *Action:* Configure the system to either **Discard** the call or **Schedule for later** if triggered during DND.
+    
+    * **Ring Duration:** Set the maximum ring time (15-30 seconds) to avoid voicemail boxes.
+
+    * **Retry Strategy:**
+      * **Max Retries:** Set attempts from 0 to 10.
+      * **Retry Interval:** Define the time gap between retries (e.g., 1 Hour).
+      * **Scenarios:** Choose which outcomes trigger a retry (e.g., **Busy**, **No-answer**, **Failed**).
+  </Step>
+
+  <Step title="Step 4: Publish">
+    Review your settings and click **Publish**. Your campaign is now active and listening for API requests.
+  </Step>
+</Steps>
+
+## Developer Integration
+
+Once published, use the **Campaign ID** from the dashboard to trigger calls.
+
+<Info>
+  **API Triggering:**
+  Your backend systems can now hit the Verloop Outreach Endpoint with the `campaign_id` and the specific user details (Phone Number, Custom Variables). The system will automatically apply the DND, Retry, and Recipe logic defined in the steps above.
+</Info>

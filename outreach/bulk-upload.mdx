@@ -1,0 +1,56 @@
+---
+title: "Create via Excel"
+description: "Launch a bulk voice campaign by uploading a customer list."
+---
+
+# Creating a Voice Campaign (Excel)
+
+The Excel upload method is ideal for one-off blasts or daily scheduled lists. Follow this 5-step wizard to launch your campaign.
+
+## Step 1: Details
+
+Navigate to **Outreach > + New Outreach** and configure the basics:
+* **Name:** Give your campaign a recognizable name (e.g., "Deepavali Sale - Lead Qual").
+* **Channel:** Select **Voice**.
+* **Voice Integration:** Choose the specific phone number/line you want these calls to originate from.
+* **Trigger:** Select **Via Excel**.
+
+## Step 2: Bot Recipe
+
+Link the campaign to a specific **Voice AI Agent**.
+* **Select Recipe:** Choose the flow designed for this campaign (e.g., "Lead Qual Flow v2").
+* **Start Recipe Logic:**
+    * **Start Immediately:** AI speaks as soon as the call connects.
+    * **Wait for User Greeting:** AI waits for the user to say "Hello" (Recommended for smoother UX).
+    * **Wait for X seconds:** Adds a fixed delay (1-5s) before speaking.
+
+## Step 3: Audience
+
+Upload your target list.
+* **File Format:** Upload your `.xls` or `.csv` file containing phone numbers and any custom variables (like `Name`, `DueAmount`) needed for the Recipe.
+* **Skip Duplicates:** Enabled by default to prevent spamming the same number twice in one campaign.
+
+## Step 4: Telephony Settings
+
+Optimize your connection rates with smart dialing rules.
+
+<AccordionGroup>
+  <Accordion title="DND (Do Not Call) Hours">
+    Define the quiet hours (e.g., 9 PM to 9 AM).
+    * **Action:** Choose to **Discard** calls that fall in this window or **Schedule for later**.
+  </Accordion>
+
+  <Accordion title="Ring Duration">
+    Set how long to ring before giving up (15s, 20s, 30s). [cite_start]Shorter durations reduce voicemail hits.
+  </Accordion>
+
+  <Accordion title="Retry Logic">
+    * **Max Retries:** Set between 0-10 attempts. 
+    * **Retry Interval:** Define the wait time between retries (e.g., 2 hours). 
+    * **Scenarios:** Select which outcomes trigger a retry (e.g., *Busy*, *No Answer*, *Failed*).
+  </Accordion>
+</AccordionGroup>
+
+## Step 5: Publish
+
+Review your settings and click **Publish**. The system will begin dialing according to your schedule.
