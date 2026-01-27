@@ -135,6 +135,17 @@
       ]
     }
   ],
+ "contextual": {
+   "options": [
+     "copy",
+     "chatgpt",
+     "claude",
+     "perplexity",
+     "mcp",
+     "cursor",
+     "vscode"
+   ]
+ },
   "footerSocials": {
     "x": "https://x.com/verloopio",
     "github": "https://github.com/verloop",
