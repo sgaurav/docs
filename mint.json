@@ -86,7 +86,7 @@
           "group": "Integrate Telephony",
           "pages": [
             "build/integrate-telephony/managing-phone-numbers",
-            "build/integrate-telephony/speech-recognition-optimization"
+            "build/integrate-telephony/speech-recognition-optimization",
             "build/integrate-telephony/voice-setup"
           ]
         }
