@@ -154,6 +154,16 @@
       "vscode"
     ]
   },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:type": "website",
+      "og:site_name": "Verloop.io Developer Docs",
+      "canonical": "https://docs.verloop.io",
+      "og:locale": "en_US",
+      "twitter:site": "@verloopio"
+    }
+  },
   "footer": {
     "socials": {
       "x": "https://x.com/verloopio",
