@@ -1,0 +1,89 @@
+---
+title: 'Ask Block'
+description: 'Configure the LLM-powered Ask Block to capture specific user inputs effectively.'
+icon: 'question'
+---
+
+The **Ask Block** is an LLM-powered component designed to ask a single, specific question to the user. It simplifies your conversation workflow by dedicating one optimized block to one specific task.
+
+Instead of writing complex logic chains, the Ask Block utilizes a pre-trained model to handle user inputs, understand context, and drive the conversation forward.
+
+
+## Key Components
+
+### 1. Prompt Section
+This is the core instruction for the Voice AI Agent. Because the block is pre-trained, you do not need to provide a complex system prompt.
+
+Simply input the specific question you want the agent to ask. The system will automatically convert this into a highly optimized Voice AI prompt.
+
+**Example:**
+* **Do:** "What is the size of the apartment you are looking to buy?"
+* **Don't:** "You are a real estate agent. You need to ask the user about the apartment size. If they say small, ask..."
+
+### 2. Add Condition
+This optional setting acts as a "Gatekeeper" for the conversation flow. It defines the logic required for the agent to move to the next node.
+
+* **How it works:** If the condition is not met, the agent will loop on this node until the user provides the required information.
+* **Example:** "The condition is achieved if the user has stated their apartment size requirement in sqft."
+
+### 3. Finetuning
+Use this section to train the AI on specific edge cases to improve model accuracy. You can provide "Few-Shot" examples (conversation history + expected agent response).
+
+<Tip>
+    Finetuning is highly recommended if your question involves industry-specific jargon or if you expect ambiguous answers from users.
+</Tip>
+
+---
+
+## Settings & Configuration
+
+The Settings section provides granular control over the AI Agent's behavior, specifically regarding latency, interruptions, and fallback logic.
+
+### Retry Logic
+**"After how many tries should the bot exit the block?"**
+
+This setting prevents the agent from getting stuck in an infinite loop.
+* **Function:** If the user fails to provide the required information after the specified count, the agent will "hard exit" the block and follow the **Fallback Node** connection.
+* **Use Case:** Ideal for optional information collection. If the user declines to answer multiple times, the agent can gracefully move on.
+
+### Conversation History
+**Enable Conversation History** allows the agent to remember context from earlier in the call.
+* **Enabled:** The agent delivers a personalized experience referencing previous answers.
+* **Disabled:** Useful for mandatory disclosures or legal statements where the script must be followed exactly without being influenced by prior context.
+
+### Barge-in (Interruptions)
+This control determines if the user can interrupt the agent while it is speaking.
+* **Enabled (Recommended):** Creates a natural, humane conversation flow.
+* **Disabled:** Use this for compliance statements or critical instructions where the agent *must* finish speaking. User audio during this time is ignored by the flow logic but is still captured in the transcript.
+
+### Nudge
+Controls how the agent handles extended periods of silence.
+* **Default:** The agent repeats the question in a slightly altered way to re-engage the user.
+* **Disabled:** The agent will wait indefinitely (or until global timeout) if the user does not speak.
+
+### AnswerFlow
+AnswerFlow allows the Ask Block to leverage your knowledge base (RAG) to answer user queries that might arise during the block's execution.
+
+* **Document Selection:** Select specific tags (e.g., `refund`, `credit-card`) to limit the knowledge base scope. If left blank, the entire library is used.
+* **Response Formatting:** Define the persona or format for the answer (e.g., "Short and concise," "Descriptive").
+
+<Warning>
+    **Latency Alert:** Enabling AnswerFlow requires the agent to search and retrieve documents, which will add latency to the response time. Use only when necessary.
+</Warning>
+
+### Speech Normalization
+Converts structured data (numbers, dates, units) into natural speech text. You can choose from the list of normalization options supported.
+* **Example:** Converts "1000sqft" to "one thousand square feet."
+
+<Warning>
+    **Latency Alert:** Only add normalizations required for the specific block. Adding unnecessary normalizations increases processing time and latency.
+</Warning>
+
+### Exit Condition & Variable Extraction
+These conditions determine when the agent successfully leaves the block. You can also extract variables (slots) from the conversation here.
+
+<Warning>
+    **Performance Best Practice:** Extracting variables at this stage leads to higher latency. 
+
+    We recommend **avoiding variable extraction** within the Ask Block unless that data is immediately required in the very next step of the flow. For data analysis, utilize **Post-Call Insights** to extract information after the call concludes.
+</Warning>

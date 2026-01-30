@@ -37,7 +37,13 @@
                 "pages": [
                   "build/recipe-builder/overview",
                   "build/recipe-builder/agent-settings",
-                  "build/recipe-builder/recipe-blocks"
+                  "build/recipe-builder/recipe-blocks",
+                  {
+                    "group": "Recipe Blocks",
+                    "pages": [
+                      "build/recipe-builder/recipe-block/ask-block"
+                    ]
+                  }
                 ]
               },
               {
