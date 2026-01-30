@@ -161,7 +161,8 @@
       "og:site_name": "Verloop.io Developer Docs",
       "canonical": "https://docs.verloop.io",
       "og:locale": "en_US",
-      "twitter:site": "@verloopio"
+      "twitter:site": "@verloopio",
+      "google-site-verification": "pIe5c9jF3HkH4Hq7zy93siRRQU4p3VnGnARslRal0gI",
     }
   },
   "footer": {
