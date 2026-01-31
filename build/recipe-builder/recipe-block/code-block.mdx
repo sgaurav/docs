@@ -47,7 +47,7 @@ The workflow follows this connection if:
   * A runtime error occurs during execution.
   * The execution times out.
 
-<Warning> **Safety Net** - Always connect the If Fails node to a fallback message or error handling block. This ensures the call does not hang or drop abruptly if your script encounters an unexpected issue. </Warning>
+<Warning> Always connect the If Fails node to a fallback message or error handling block. This ensures the call does not hang or drop abruptly if your script encounters an unexpected issue. </Warning>
 
 ## Testing & Debugging
 You can validate your logic without publishing the recipe using the built-in test suite.
@@ -56,5 +56,5 @@ You can validate your logic without publishing the recipe using the built-in tes
   * **Execute**: Click the Test button at the bottom right.
   * **Debug**: Review the Console pane to see console.log outputs or error traces.
 
-<Tip> Best Practice Use the Code Block to sanitize data before passing it to a SmartAI block. For example, converting a raw timestamp (e.g., "1600") into spoken time (e.g., "4 PM") using code is faster and more reliable than asking the AI to figure it out. </Tip>
+<Tip> Use the Code Block to sanitize data before passing it to a SmartAI block. For example, converting a raw timestamp (e.g., "1600") into spoken time (e.g., "4 PM") using code is faster and more reliable than asking the AI to figure it out. </Tip>
 
