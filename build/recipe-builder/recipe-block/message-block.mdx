@@ -1,0 +1,51 @@
+---
+title: 'Message Block'
+description: 'Broadcast static messages with low latency and high reliability.'
+---
+
+The **Message Block** is the most fundamental building block in a Verloop.io Voice AI Agent recipe. It is used to relay a static text to the user.
+
+Unlike the SmartAI or Ask blocks, the Message Block does not wait for user input. It processes the text, speaks it, and the workflow **immediately continues** to the next block in the recipe. Because the content is static, it is processed rapidly, making it the **fastest-performing** and **lowest latency AI Agent** block in your toolkit.
+
+## Key Components
+
+### 1. Text
+This is the script the Voice AI Agent will speak. While the core message is static, you can make it dynamic using variables.
+
+**Personalization**
+You can use the `{{variable_name}}` format to insert data collected earlier in the flow or passed via API.
+
+* **Example Input:** `Hello {{first_name}}, hope you are having a great day.`
+* **Agent Output:** "Hello John, hope you are having a great day."
+
+<Note>
+  **Best Practice for Long Scripts**
+  If you have a long paragraph or a multi-sentence disclosure, we recommend splitting it into **two or more sequential Message Blocks** rather than putting it all in one. This improves the pacing of the speech and makes the flow easier to manage.
+</Note>
+
+### 2. Node Connections
+Since the Message Block does not listen for a user response, it relies on simple linear flow.
+* **Incoming Connection:** The trigger or previous block that leads to this message.
+* **Outgoing Connection:** The block the agent should execute immediately after speaking this text.
+
+---
+
+## Strategic Use Cases & Latency Optimization
+
+While simple, the Message Block is a powerful tool for optimizing the "feel" of a conversation. Because the text is constant, the system **aggressively caches** these blocks, resulting in near-zero processing time.
+
+### 1. Masking Latency
+When transitioning between two heavy processing blocks (like two SmartAI blocks), there may be a slight delay while the LLM generates a response.
+
+You can place a short Message Block between them to "buy time." While the agent speaks the filler text, the system begins processing the next block in the background.
+
+<Tip>
+  **Pro Tip: Improving Perceived Latency**
+  Use a Message Block with a phrase like *"Let me check that for you just a moment..."* before transitioning to a complex SmartAI block. This keeps the audio channel active and makes the interaction feel instantaneous to the user.
+</Tip>
+
+### 2. Mandatory Disclosures
+Use this block when the agent must say something exactly the same way every time for compliance reasons (e.g., "This call is being recorded for quality assurance"). SmartAI blocks may vary the phrasing; Message Blocks do not.
+
+### 3. Introductions
+It is the standard block for the very start of a conversation, establishing the agent's identity before logic branches occur.

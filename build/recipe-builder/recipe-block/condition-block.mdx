@@ -1,0 +1,42 @@
+---
+title: 'Condition Block'
+description: 'Route conversations based on deterministic logic and variable comparisons.'
+---
+
+The **Condition Block** acts as the logic gate of your Voice AI Agent recipe. It evaluates specific variables against defined criteria and routes the conversation workflow accordingly.
+
+This block is essential for scenarios where the conversation path depends on hard data rather than fuzzy user conversation. For example, a refund process might differ significantly based on the transaction amount, user loyalty tier, and product category.
+
+<Note>
+  **Rule of Thumb: Condition vs. SmartAI**
+  * **Use Condition Block:** When you have clear, rule-based logic (e.g., "If `amount` > 500 AND `user` is 'Gold'"). It is faster and error-proof.
+  * **Use SmartAI/Ask Block Routing:** When you need to route based on vague user intent or sentiment (e.g., "If the user seems angry").
+</Note>
+
+## How it Works
+
+The Condition Block executes logic similar to `if / else-if / else` statements in programming. It evaluates rules top-to-bottom and follows the path of the first matching condition.
+
+### 1. Defining Conditions
+To configure a logic rule:
+1.  **Select a Variable:** Choose the variable you want to evaluate (e.g., `{{transaction_amount}}`).
+2.  **Choose an Operator:** Select a comparison operator such as:
+    * Equals / Not Equals
+    * Less than / Greater than
+    * Contains / Does not contain
+    * Is Empty / Is Not Empty
+    * Other conditions
+3.  **Define the Value:** Compare the variable against:
+    * **A Fixed Value:** (e.g., `500`, `active`, `refund`)
+    * **Another Variable:** (e.g., `{{account_balance}}`)
+
+### 2. Complex Logic (Nesting & Chaining)
+You can handle sophisticated scenarios by layering your logic:
+
+* **AND/OR Logic:** Combine multiple criteria within a single branch (e.g., "If `Region` is 'US' **AND** `Status` is 'Active'").
+* **Else-If Structure:** Add multiple distinct conditions to the block. The system checks them sequentially.
+    * *Condition 1:* Is User VIP? -> Route to VIP Flow.
+    * *Condition 2:* Is User New? -> Route to Onboarding Flow.
+
+### 3. The "Else" Fallback
+Every Condition Block includes a default **Else** path. If none of the defined conditions are met, the workflow automatically follows this connection

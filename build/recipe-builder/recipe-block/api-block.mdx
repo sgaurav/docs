@@ -1,0 +1,83 @@
+---
+title: 'API Block'
+description: 'Extend your agent’s capabilities by integrating external systems to push and pull data in real-time.'
+---
+
+The **API Block** is the gateway between your Voice AI agent and your external infrastructure. It allows the agent to interact with third-party servers to fetch dynamic information (like account balances) or perform actions (like booking appointments) during an active call.
+
+### Common Use Cases
+* **Voice Agent for Banking:** Fetching the latest account balance or validating a PIN.
+* **Voice Agent for Healthcare:** Checking doctor availability and creating a new appointment record.
+* **Voice Agent for Logistics:** Pushing a "delivery rescheduled" status update to your CRM.
+
+---
+
+## Configuration
+
+Setting up an API block involves defining how the agent talks to your server and handling the response.
+
+<Steps>
+  <Step title="Select Request Method">
+    Choose the HTTP method required for the operation. We support standard methods including `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`.
+  </Step>
+
+  <Step title="Define Endpoint URL">
+    Enter the API endpoint.
+    * **Full URL:** You can paste the fully qualified URL (e.g., `https://api.myservice.com/v1/users`).
+    * **Relative Path:** If a Base URL is configured in your global agent settings, you can simply add the path (e.g., `/v1/users`).
+  </Step>
+
+  <Step title="Authentication">
+    Select the appropriate authentication profile. These are pre-configured in your platform settings (e.g., Basic Auth, Bearer Token, API Key) to ensure secure access without hardcoding credentials in the recipe.
+  </Step>
+
+  <Step title="Headers">
+    Add any required HTTP headers (e.g., `Content-Type: application/json`).
+    * **Dynamic Values:** You can use variables collected earlier in the workflow (e.g., `{{user_id}}`) to pass dynamic context in the headers.
+  </Step>
+
+  <Step title="Parameters & Body">
+    Configure the data to be sent with the request.
+    * **Query Params:** Key-value pairs appended to the URL.
+    * **Body:** The JSON payload sent with POST/PUT requests. Supports variable injection for personalization.
+  </Step>
+
+  <Step title="Advanced Settings">
+    Fine-tune the resilience and performance of the call:
+    * **Timeout:** Define how long the agent waits for a response. Configurable from **1 second to 40 seconds**.
+    * **Retry on Failure:** Toggle this to automatically retry the request if it fails (e.g., due to a network blip). You can configure up to **5 retries**.
+  </Step>
+</Steps>
+
+---
+
+## Performance & Latency
+
+<Warning>
+  **Critical: The "Dead Air" Risk**
+  The AI Agent remains **silent** while the API request is processing.
+  
+  * **Expectation:** Your endpoint should ideally respond within milliseconds.
+  * **Impact:** If the API takes 3-4 seconds to respond, the user experiences 3-4 seconds of complete silence ("dead air"). This significantly degrades the user experience and may cause them to hang up.
+  * **Mitigation:** If you anticipate a slow API, place a **Message Block** immediately before the API Block saying, *"Let me look that up for you, please hold on a second..."* to set user expectations.
+</Warning>
+
+---
+
+## Routing & Error Handling
+
+The API Block dictates the flow based on the technical outcome of the HTTP request.
+
+### 1. Success Path
+Triggered when the API returns a successful status code (typically 2xx).
+* **Data Usage:** The JSON response from the API is captured, and you can map specific fields to variables (e.g., `api_response.balance` -> `{{current_balance}}`) for use in the next SmartAI or Message block.
+
+### 2. Failure Path
+Triggered when the API returns an error code (4xx, 5xx) or times out.
+* **Fallback Logic:** You must connect this node to a fallback flow. For example, if a "Check Balance" API fails, route to a Message block saying, *"I'm having trouble accessing your records right now. Let me transfer you to a human agent."*
+
+---
+
+## Testing
+
+Before publishing, use the **Test** function within the block. This allows you to trigger the API call with mock variables to ensure authentication, headers, and payload structures are correct and that the endpoint is reachable.

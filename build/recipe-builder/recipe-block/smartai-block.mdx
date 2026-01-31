@@ -1,0 +1,113 @@
+---
+title: 'SmartAI Block'
+description: 'Leverage LLMs for complex logic, multi-step conversations, and intelligent decision-making.'
+---
+
+The **SmartAI Block** is the most powerful conversational node in the Verloop.io Voice AI recipe. Unlike standard blocks that follow a defined path, the SmartAI block uses Large Language Models (LLMs) to interpret user intent, handle complex logic, and engage in multi-turn conversations.
+
+This block is ideal for detailed decision-making scenarios, such as a debt collection agent that needs to negotiate payment plans based on a user's specific financial situation.
+
+<Note>
+  **Pro Tip: Choose the Right Block**
+  If you only need to ask a **single question** to capture a specific data point (e.g., "What is your date of birth?"), the **Ask Block** is better suited for the job. Use SmartAI for conversations that require reasoning or multiple steps.
+</Note>
+
+## Core Components
+
+### 1. Prompt Section
+This is the core "brain" of the agent for this specific block. Here, you define the persona, the goal, and the workflow the Voice AI Agent must follow.
+
+For the SmartAI Block, you should optimize for a **detailed prompt** that cleanly captures:
+* Use-cases and primary goals.
+* Edge cases (what to do if the user says something unexpected).
+* Boundary conditions (what the agent is *not* allowed to do).
+
+**Using Variables**
+You can personalize the prompt using the `{{variable_name}}` format supported by the Recipe.
+* **Example:** "You are speaking to `{{customer_name}}` regarding a loan amount of `{{debt_amount}}` due on `{{payment_date}}`."
+
+### 2. Additional Instructions
+This field is optional but highly recommended for defining behavioral guardrails. While the *Prompt* handles the "What," the *Additional Instructions* handle the "How."
+
+* **Best Practice:** Keep these pointwise and explicit.
+* **Example:** "Do not use slang. Maintain an empathetic tone. Never ask for the credit card CVV."
+
+---
+
+## Settings
+
+The Settings section provides granular control over the AI Agent's behavior, latency, and interaction style.
+
+### 3.1 Retry Limits
+**"After how many tries bot should exit the block?"**
+
+This setting prevents the agent from getting stuck in an infinite loop.
+* **How it works:** If the agent cannot determine an intent or collect the required info after the specified number of attempts, it will "hard exit" the block.
+* **Where it goes:** The flow will move immediately to the **Fallback Node** connection.
+* **Use Case:** Helpful when collecting optional information. If the user refuses to share it twice, the bot can move on rather than harassing the user.
+
+### 3.2 Conversation History
+**Enable conversation history**
+
+* **Enabled (Default):** The agent is aware of everything discussed previously in the call. This ensures a personalized and context-aware conversation.
+* **Disabled:** The agent treats this block as an isolated event.
+* **When to Disable:** Use this for mandatory disclosures or legal statements where previous context should not alter the agent's strict adherence to the script.
+
+### 3.3 Barge-in
+**Allow Barge-in for voice calls**
+
+* **Enabled:** Users can interrupt the agent while it is speaking. This feels natural and humane.
+* **Disabled:** The agent will ignore user audio until it finishes speaking its current line.
+* **Note:** Even when disabled, user audio during the speech is recorded in the transcript.
+
+### 3.4 Nudge
+**Behavior during silence**
+
+* **Enabled (Default):** If there is an extended period of silence, the agent will repeat the question or prompt the user in a slightly altered way to keep the conversation moving.
+* **Disabled:** The agent will wait indefinitely (or until the call times out) if the user does not speak.
+
+### 3.5 AnswerFlow (RAG)
+AnswerFlow allows the agent to consult external documents and training materials to answer dynamic queries.
+
+* **Document Tags:** You can filter which documents the agent accesses by selecting specific tags (e.g., `refund_policy`, `credit_card`). If left blank, the entire library is used.
+* **Response Formatting:** You can define how the answer should be delivered (e.g., "Keep it under 2 sentences," "Use a bulleted list").
+
+<Warning>
+  **Latency Impact**
+  Enabling AnswerFlow requires the system to search and retrieve documents. This will add a small amount of latency to the Agent's response time.
+</Warning>
+
+### 3.6 Speech Normalization
+This converts raw text data (like "100mg" or "14/02/2024") into natural spoken text (like "one hundred milligrams" or "the fourteenth of February, twenty twenty-four").
+
+<Warning>
+  Only add normalizations that are strictly required for this specific block. Each active normalization rule adds processing time, leading to higher latency.
+</Warning>
+
+### 3.7 Intent and Variable Mapping
+This section defines the "Success" exit conditions for the block.
+
+* **Intents:** Define the specific user intents that, when detected, will cause the agent to exit this block and move to the next step in the recipe.
+* **Variable Extraction:** You can configure the LLM to extract specific data points (e.g., `payment_amount`) upon exit.
+
+<Warning>
+  **Performance Note**
+  Extracting variables via the SmartAI block increases latency.
+  * **Recommendation:** Avoid extraction unless the data is immediately required for logic in the *very next* block.
+  * **Alternative:** If the data is only needed for analytics, use **Post-Call Insights** to extract it after the call concludes.
+</Warning>
+
+### 3.8 Intent Passing
+**Intent to be passed to the next block**
+
+Specify a variable name here. The intent detected within this SmartAI block will be stored in this variable, allowing you to use it for routing logic further down the workflow.
+
+---
+
+## Fallback Node
+
+Every SmartAI block must have a Fallback Node connection. The workflow routes here if:
+1.  The **Retry Count** (Section 3.1) is exhausted.
+2.  The AI Agent encounters a system error or critical failure.
+
+Ensure this node connects to a graceful error message or a human handoff to prevent call drops.

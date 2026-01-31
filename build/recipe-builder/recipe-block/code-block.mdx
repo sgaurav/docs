@@ -1,0 +1,59 @@
+---
+title: 'Code Block'
+description: 'Execute custom Javascript to handle data transformation, calculations, and complex logic.'
+---
+
+The **Code Block** enables you to run custom Javascript within your Voice AI recipe. It provides a sandboxed environment to perform operations that standard blocks cannot handle, such as complex math, string manipulation, or array processing.
+
+Unlike the SmartAI block which relies on LLMs, the Code Block is deterministic and runs locally within the execution flow.
+
+## Key Features
+
+### 1. Zero Latency Impact
+The Code Block executes in a lightweight, sandboxed environment with minimal resource usage. The execution time is negligible, meaning it **does not add latency** to the conversation flow. It is the preferred method for logic operations over using an LLM.
+
+### 2. The Development Interface
+The block opens into a dedicated code editor designed for safe development and testing.
+
+* **Editor Pane:** Supports standard Javascript (ES6).
+* **Test Variables:** A dedicated input section to define mock values for variables (e.g., `{{account_balance}}`) to simulate real call scenarios.
+* **Console:** A built-in debug console that captures logs and errors during testing.
+
+### 3. Function Structure
+All logic must be wrapped within the main function, which exposes three core arguments:
+
+```javascript
+function main(context, variables, plugins) {
+  // Your logic here
+  // return variables; 
+}```
+
+```context```: Contains metadata about the current call state.
+```variables```: Access to read and write recipe variables.
+```plugins```: Allows interaction with built-in system plugins to affect the broader workflow.
+
+-----
+
+## Workflow Routing
+The Code Block does not use standard linear routing. Instead, it determines the path based on the outcome of the code execution.
+
+**If Success**
+The workflow follows this connection if the code executes without throwing any errors. This is the primary path for valid logic execution.
+
+**If Fails**
+The workflow follows this connection if:
+  * There is a syntax error in the code.
+  * A runtime error occurs during execution.
+  * The execution times out.
+
+<Warning> Safety Net Always connect the If Fails node to a fallback message or error handling block. This ensures the call does not hang or drop abruptly if your script encounters an unexpected issue. </Warning>
+
+## Testing & Debugging
+You can validate your logic without publishing the recipe using the built-in test suite.
+
+  * **Define Inputs**: Enter mock data in the Test variables pane on the right.
+  * **Execute**: Click the Test button at the bottom right.
+  * **Debug**: Review the Console pane to see console.log outputs or error traces.
+
+<Tip> Best Practice Use the Code Block to sanitize data before passing it to a SmartAI block. For example, converting a raw timestamp (e.g., "1600") into spoken time (e.g., "4 PM") using code is faster and more reliable than asking the AI to figure it out. </Tip>
+

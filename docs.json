@@ -41,7 +41,12 @@
                   {
                     "group": "Recipe Blocks",
                     "pages": [
-                      "build/recipe-builder/recipe-block/ask-block"
+                      "build/recipe-builder/recipe-block/message-block",
+                      "build/recipe-builder/recipe-block/smartai-block",
+                      "build/recipe-builder/recipe-block/ask-block",
+                      "build/recipe-builder/recipe-block/condition-block",
+                      "build/recipe-builder/recipe-block/code-block",
+                      "build/recipe-builder/recipe-block/api-block"
                     ]
                   }
                 ]
