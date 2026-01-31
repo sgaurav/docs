@@ -29,9 +29,9 @@ function main(context, variables, plugins) {
 }
 ```
 
-```context```: Contains metadata about the current call state.
-```variables```: Access to read and write recipe variables.
-```plugins```: Allows interaction with built-in system plugins to affect the broader workflow.
+  * ```context```: Contains metadata about the current call state.
+  * ```variables```: Access to read and write recipe variables.
+  * ```plugins```: Allows interaction with built-in system plugins to affect the broader workflow.
 
 -----
 
@@ -47,7 +47,7 @@ The workflow follows this connection if:
   * A runtime error occurs during execution.
   * The execution times out.
 
-<Warning> Safety Net Always connect the If Fails node to a fallback message or error handling block. This ensures the call does not hang or drop abruptly if your script encounters an unexpected issue. </Warning>
+<Warning> **Safety Net** - Always connect the If Fails node to a fallback message or error handling block. This ensures the call does not hang or drop abruptly if your script encounters an unexpected issue. </Warning>
 
 ## Testing & Debugging
 You can validate your logic without publishing the recipe using the built-in test suite.
