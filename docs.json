@@ -16,7 +16,7 @@
           {
             "group": "Overview",
             "pages": [
-              "introduction",
+              "index",
               "capabilities",
               "usecases"
             ]
