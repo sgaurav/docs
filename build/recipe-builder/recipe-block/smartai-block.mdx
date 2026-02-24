@@ -84,7 +84,23 @@ This converts raw text data (like "100mg" or "14/02/2024") into natural spoken t
   Only add normalizations that are strictly required for this specific block. Each active normalization rule adds processing time, leading to higher latency.
 </Warning>
 
-### 3.7 Intent and Variable Mapping
+### 3.7 Expressiveness
+This setting adjusts the flexibility of the AI Agent's tone, allowing you to control the creativity and variance of responses.
+
+- **Range**: 0 (Concise) to 1 (Chatty).
+- **Default**: 0.5.
+
+**Usage Guidelines:**
+- **Low (Concise)**: Use for consistent, precise answers where factual accuracy is prioritized.
+- **High (Chatty)**: Use for more creative, varied responses to make the conversation feel more natural and human-like.
+
+<Tip>
+**Best Practices:**
+- For sections that require **exact compliance** with policies or strict scripts, it is best to use a **low value**.
+- When creating **introductions** or small talk, we recommend a setting of at least **mid-way (0.5 or higher)** to ensure naturalness.
+</Tip>
+
+### 3.8 Intent and Variable Mapping
 This section defines the "Success" exit conditions for the block.
 
 * **Intents:** Define the specific user intents that, when detected, will cause the agent to exit this block and move to the next step in the recipe.
@@ -97,7 +113,7 @@ This section defines the "Success" exit conditions for the block.
   * **Alternative:** If the data is only needed for analytics, use **Post-Call Insights** to extract it after the call concludes.
 </Warning>
 
-### 3.8 Intent Passing
+### 3.9 Intent Passing
 **Intent to be passed to the next block**
 
 Specify a variable name here. The intent detected within this SmartAI block will be stored in this variable, allowing you to use it for routing logic further down the workflow.
