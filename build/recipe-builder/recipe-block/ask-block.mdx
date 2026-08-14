@@ -55,6 +55,10 @@ This control determines if the user can interrupt the agent while it is speaking
 * **Enabled (Recommended):** Creates a natural, humane conversation flow.
 * **Disabled:** Use this for compliance statements or critical instructions where the agent *must* finish speaking. User audio during this time is ignored by the flow logic but is still captured in the transcript.
 
+<Tip>
+    When Barge-in is enabled, [Smart Interruption](../smart-interruption) determines *how* the agent reacts — distinguishing genuine interruptions from acknowledgements and background noise, and resuming from where it left off.
+</Tip>
+
 ### Nudge
 Controls how the agent handles extended periods of silence.
 * **Default:** The agent repeats the question in a slightly altered way to re-engage the user.

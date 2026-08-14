@@ -37,6 +37,7 @@
                 "pages": [
                   "build/recipe-builder/overview",
                   "build/recipe-builder/agent-settings",
+                  "build/recipe-builder/smart-interruption",
                   "build/recipe-builder/recipe-blocks",
                   {
                     "group": "Recipe Blocks",
